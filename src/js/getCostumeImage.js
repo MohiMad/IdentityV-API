@@ -1,28 +1,29 @@
 const got = require("got");
-const { errorStatus } = require("./static.js");
+const { errorStatus, formatName } = require("./static.js");
 
 function matchURL(imgElement) {
-    return imgElement.match(/(http|https)?:\/\/(\S+)(?=")/g);
+    return imgElement.match(/(http|https)?:\/\/(\S+)(?=")/)[0];
 }
 
 function retreiveImgElement(res) {
-    const matches = res.match(/<img.*class="pi-image-thumbnail"/g);
-    if (!matches || matches.length < 1) return null;
+    const match = res.match(/<img.*class="pi-image-thumbnail"/g);
+    if (!match || match.length < 1) return null;
 
-    return matches[0];
+    return match[0];
 }
 
-module.exports = async function getCostumeImage(image) {
-    const link = `https://id5.fandom.com/wiki/${image}`;
-    const response = await got(link).catch(e => console.log(e));
+module.exports = async function getCostumeImage(name) {
+    const URL = `https://id5.fandom.com/wiki/${name}`;
+    const response = await got(URL).catch(() => null);
 
     if (!response) return errorStatus();
 
     const imgElement = retreiveImgElement(response.body);
 
-    if (!imgElement) return errorStatus();
+    if (!imgElement) return errorStatus(`No image found in URL ${URL}`);
+    const link = matchURL(imgElement).replace(/\/revision.*\d+/, "");
 
     return JSON.parse(
-        `{"status": 200, "link": "${matchURL(imgElement)[0]}"}`);
+        `{"status": 200, "name": "${formatName(name)}", "link": "${link}"}`);
 
 }
