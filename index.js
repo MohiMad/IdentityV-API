@@ -1,18 +1,22 @@
 const app = require("express")();
 const static = require("./src/js/static.js");
 const cors = require("cors");
-const getCostumeImage = require("./src/js/getCostumeImage.js");
+const DataParser = require("./src/js/DataParser.js");
 
 app.use(cors({ orgin: "*" }));
 
 app.get("/", async (req, res) => {
     if (static.emptyQuery(req.query)) {
-        return res.sendFile(__dirname + "/src/html/index.html");
+        app.engine('html', require('ejs').renderFile);
+        res.render("index.html", { version: static.getVersion() });
+
+        return;
     }
 
-    const data = await getCostumeImage(static.formatQueryName(req.query.name));
-    res.send(data);
+    const dataParser = new DataParser(static.formatQueryName(req.query.name));
+    const data = await dataParser.scrapeAndParseData();
 
+    res.send(data || static.errorStatus());
 });
 
 
