@@ -1,6 +1,10 @@
 const params = require("../json/params.json");
+const packageJSON = require("../../package.json")
 
 module.exports = {
+    getVersion() {
+        return packageJSON.version;
+    },
     errorStatus: (msg = "Page not found!") => {
         return JSON.parse(`{"status": 404, "message": "${msg}"}`);
     },
