@@ -18,13 +18,13 @@ class DataParser {
 
         if (!costumeImageLink || !costumeDescription) return;
 
-        return JSON.parse(
-            `{
-                "status": 200, 
-                "name": "${formatName(this.name)}", 
-                "description": "${costumeDescription}", 
-                "link": "${costumeImageLink}"
-            }`);
+        return JSON.parse(JSON.stringify(
+            {
+                status: 200,
+                name: formatName(this.name),
+                description: costumeDescription,
+                link: costumeImageLink
+            }));
     }
 
     async _retrieveData() {
