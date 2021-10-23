@@ -16,6 +16,7 @@ app.get("/", async (req, res) => {
     const dataParser = new DataParser(static.formatQueryName(req.query.name));
     const data = await dataParser.scrapeAndParseData();
 
+    //TODO: Add a new error code for rate limit error
     res.send(data || static.errorStatus());
 });
 
