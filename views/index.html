@@ -5,59 +5,106 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Identity V Costume API</title>
+    <title>Identity V API</title>
     <style>
         html,
         body {
             padding: 0;
             margin: 0;
+            scroll-behavior: smooth;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
         }
 
-        h1 {
-            margin-left: .5em;
+        section {
+            margin-bottom: 5em;
         }
 
-        h3 {
-            margin-left: 2em;
-            transform: translateY(-100%);
-        }
-
-        p {
-            margin-left: 2em;
-        }
-
-        h2 {
+        section.head {
             margin-left: 1em;
+            font-size: larger;
+        }
+
+        section:not(.head) {
+            margin-left: 2.5em;
+        }
+
+        a.param {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 600;
         }
 
         .error-code {
             margin-top: 4%;
         }
+
+        code {
+            font-size: large;
+            color: rgb(248, 58, 89);
+        }
     </style>
 </head>
 
 <body>
-    <h1>Identity V Costume API</h1>
-    <h3 class="version">Version %version%</h3>
-    <p>This API uses <a href="https://id5.fandom.com" target="_blank">Identity V Fandom</a>'s pages to scrape and find a
-        costume's data.</p>
-    <br>
-    <h2>Query Parameters</h2>
-    <p>
-        <a href="/?name=Whiplash" target="_blank">name</a> - The name of the skin you want to get its costume link.
-    </p>
+    <section class="head">
+        <h1>Identity V API</h1>
+        <h3 class="version">Version <%= version %>
+        </h3>
+        <p>This API uses <a href="https://id5.fandom.com" target="_blank">Identity V Fandom</a>'s pages to scrape and
+            find data for an item.</p>
+    </section>
+    <section>
+        <h2>Query Parameters</h2>
+        <div>
+            <p>
+                <a class="param" href="/skin/Whiplash" target="_blank">/skin/:name</a> - The name of the skin you want
+                to get its costume link.
+            </p>
+            <p>
+                <a class="param" href="/accessory/Apple" target="_blank">/accessory/:name</a>
+                - Get data for an accessory. The <code>:name</code> is the query name for the acessory.
+            </p>
+            <p>
+                <a class="param" href="/aliases/" target="_blank">/aliases</a> - Get the aliases for all character
+                names.
+            </p>
+            <p>
+                <a class="param" href="/portrait/colorful_memory/Cowboy" target="_blank">/portrait/:series/:name</a> -
+                Get
+                data for a portrait. The <code>:series</code> is the query for the series type.
+                See <a href="#possible_portrait_series">possible series</a>.
+                <br>
+                The <code>:name</code> is the query name for the character you want to retreive its series' portrait.
+            </p>
+        </div>
+    </section>
 
-    <h2 class="error-code">Error Codes</h2>
-    <ul>
-        <li>404 - Page not found. The API failed to find the fandompage you asked for.</li>
-    </ul>
+    <section>
+        <h2 class="error-code">Error Codes</h2>
+        <ul>
+            <li><code>404</code> - Page Not Found. The API failed to find the fandompage you asked for.</li>
+            <li><code>400</code> - Bad Request. Thrown when a parameter is missing or has wrong value.</li>
+        </ul>
+    </section>
 
-    <script>
-        const version = "<%= version %>";
-        const versionElement = document.querySelector(".version");
-        versionElement.innerText = versionElement.innerText.replace("%version%", version);
+    <section id="possible_portrait_series">
+        <h2>Possible portrait series</h2>
+        <p>Portrait series are non-speacial portraits, they're all summed up in one page in the Identity V Fandom, see
+            <a href="https://id5.fandom.com/wiki/Colorful_Memory">the colorful memory series' page</a> for reference.
+        </p>
+        <ul>
+            <li><a href="https://id5.fandom.com/wiki/Colorful_Memory">Colorful Memory</a></li>
+            <li><a href="https://id5.fandom.com/wiki/Black-and-White_(Portrait)">Black and White</a></li>
+        </ul>
 
-    </script>
+        <p>Note that the API is flexible with the <code>:series</code> query, meaning that you don't have to write it
+            the way the fandom requires you to.
+            <br>For instance, using "Black_and_white" is enough instead of "Black-and-White_(Portrait)"
+        </p>
+    </section>
+    <section>
+        <h2>Examples</h2>
+        <p>Be patient lol</p>
+    </section>
 </body>
 
 </html>
