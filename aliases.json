@@ -58,7 +58,7 @@
         "wax_artist": ["wax_artist", "philippe", "phillip", "physiognomist"]
     },
     "portraits": {
-        "Black-and-White_(Portrait)": ["black_and_white", "bnw"],
+        "Black-and-White_(Portrait)": ["black_and_white", "blackandwhite","bnw"],
         "Colorful_Memory": ["colorfulmemory", "colorful_memory"]
     }
 }

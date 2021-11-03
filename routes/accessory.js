@@ -1,15 +1,18 @@
 const express = require("express");
 const router = express.Router();
-const static = require("../src/static.js");
-const DataParser = require("../src/DataParser.js");
+const Utility = require("../src/Utility.js");
+const Accessory = require("../src/Accessory.js");
 
 router.get("/:name", async (req, res) => {
-    const name = static.formatParam(req.params.name);
+    const name = Utility.formatParam(req.params.name);
 
-    const dataParser = new DataParser(name, "ACCESSORY");
-    const data = await dataParser.scrapeAndParseData();
+    const accessory = new Accessory(name);
+    await accessory.scrapeData();
+    accessory.setChangingIndexProperties();
+    
+    const data = accessory.jsonifyData();
 
-    if (!data) return static.throwError(res);
+    if (!data) return Utility.sendErrorMsg(res);
     res.send(data);
 });
 
