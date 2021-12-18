@@ -1,7 +1,7 @@
 import React from 'react';
-import InlineCode from './InlineCode';
-import CodeBlock from './CodeBlock';
-import CopyHrefIcon from './CopyHrefIcon';
+import InlineCode from '../InlineCode';
+import CodeBlock from '../CodeBlock';
+import CopyHrefIcon from '../CopyHrefIcon';
 
 
 
@@ -30,7 +30,7 @@ function SkinExamples() {
 
     return (
         <div id="examples-skin">
-            <h2><CopyHrefIcon value="examples-skin" />Skin Examples</h2>
+            <h2><CopyHrefIcon value="examples/skin" />Skin Examples</h2>
             <p>To get accurate skin data, use the <InlineCode>/api/skin</InlineCode> endpoint.</p>
             <h3>Retreive data for Luchino's <a href="https://id5.fandom.com/ryuk" rel="noreferrer" target="_blank">Ryuk</a> costume:</h3>
             <CodeBlock className="language json" code={ryukData} />

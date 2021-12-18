@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CopyHrefIcon from './CopyHrefIcon';
+import CopyHrefIcon from '../components/CopyHrefIcon';
 
 function Changelog(props) {
     const [changelogData, setChangelogData] = useState(
@@ -25,13 +25,13 @@ function Changelog(props) {
 
     useEffect(() => {
         async function fetchData() {
-            fetch("/public/changelog.json")
-            .then((res) => res?.json?.())
-            .then((data) => {
-                if (!data) return;
+            fetch("/public/json/changelog.json")
+                .then((res) => res?.json?.())
+                .then((data) => {
+                    if (!data) return;
 
-                setChangelogData(data)
-            });
+                    setChangelogData(data)
+                });
         }
 
         fetchData();
@@ -39,16 +39,16 @@ function Changelog(props) {
 
     return (
         <section id="change-log">
-            <h1><CopyHrefIcon value="change-log" />Changelog</h1>
+            <h1><CopyHrefIcon value="changelog" />Changelog</h1>
             <ul>
                 {Object.entries(changelogData).map(([version, changes]) => {
                     return (
                         <li key={version.toString()}>
                             {version}
                             <ul>
-                            {changes.map((change) => {
-                                return (<li key={change.toString()}>{change}</li>)
-                            })}
+                                {changes.map((change) => {
+                                    return (<li key={change.toString()}>{change}</li>)
+                                })}
                             </ul>
                         </li>
                     )

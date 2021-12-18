@@ -6,7 +6,7 @@ function CopyHrefIcon(props) {
 
     function copyHrefToClipBoardAndChangeState() {
         setText("Copied!");
-        navigator.clipboard.writeText((props.value) ? `${window.location.origin}/#${props.value}` : window.location.href);
+        navigator.clipboard.writeText((props.value) ? `${window.location.origin}/${props.value}` : window.location.href);
 
         setTimeout(() => {
             setText("Copy to Clipboard!");

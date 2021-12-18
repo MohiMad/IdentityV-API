@@ -66,7 +66,7 @@ class Utility {
 
             for (const characterAlias of charactersAliases) {
                 const exists = characterAlias.some((value) => {
-                    return value == name.toLowerCase().replace(Regex.WORDS_CONNECTION_CHARACTERS, "_")
+                    return value === name.toLowerCase().replace(Regex.WORDS_CONNECTION_CHARACTERS, "_")
                 });
 
                 if (exists) return factor;

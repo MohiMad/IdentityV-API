@@ -1,29 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from './components/Navbar';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { gsap } from 'gsap';
+import PageTemplate from './components/PageTemplate';
 import SectionHolder from './components/SectionHolder';
+import { Outlet } from "react-router-dom";
 
-export const PageContext = React.createContext();
+function App(props) {
+    const { pathname } = useLocation();
 
-function App() {
-    const [page, setPageState] = useState("#getting-started");
-
-    function setPage(id) {
-        if(!id || id === '') return setPageState("#getting-started");
-            if(/examples-.+?/.test(id)) return setPageState("#examples");
-    
-            setPageState(id);
-    }
-    
     useEffect(() => {
-        setPage(window.location.hash)
-    }, []);
+        const rootElem = document.getElementById("root");
+
+        gsap.to(rootElem, {
+            scrollTop: 0,
+            transition: 50
+        })
+
+    }, [pathname]);
 
     return (
-        <PageContext.Provider value={{ page, setPage }}>
-            <Navbar />
-            <SectionHolder />
-        </PageContext.Provider>
+        <PageTemplate>
+            <SectionHolder>
+                <Outlet />
+            </SectionHolder>
+        </PageTemplate>
     );
 }
 
-export default App;
+export default App; 

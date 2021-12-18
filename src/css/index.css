@@ -8,6 +8,14 @@ body {
   scroll-behavior: smooth;
 }
 
+html {
+  height: 100%;
+  overflow: auto;
+}
+body {
+  height: 100%;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Lato:wght@300&display=swap");
 
 :root {
@@ -30,9 +38,9 @@ body {
   display: grid;
   grid-template-areas: header body;
   grid-template-columns: 25vw 75vw;
-  height: auto;
+  height: 100%;
+  width: 100%;
   overflow-x: hidden;
-  width: auto;
 }
 h1 {
   font-size: clamp(3em, 2.5vw, 6em);
@@ -180,11 +188,12 @@ span.examples:active {
 }
 
 .section-holder {
-  grid-column-end: 3;
   grid-column-start: 2;
-  margin: 0 5%;
+  grid-column-end: 3;
+  margin: 0% 5% 5% 5%;
   position: relative;
   width: auto;
+  height: 100%;
 }
 
 pre code {
@@ -271,22 +280,22 @@ span.code {
   justify-content: center;
   position: relative;
   padding: 0.3em 1em;
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
 }
 
 .warning-badge-holder h3 {
   position: absolute;
   transform: translateY(-150%);
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 400;
   font-size: x-large;
   letter-spacing: 2px;
 }
 
-.section-holder div[id]:not(:last-child){
+.section-holder div[id]:not(:last-child) {
   margin-bottom: 5em;
 }
 
@@ -299,9 +308,10 @@ span.code {
   right: 15px;
   cursor: pointer;
 }
-.warning-badge-holder button:hover, .warning-badge-holder button:active {
+.warning-badge-holder button:hover,
+.warning-badge-holder button:active {
   color: #000;
-  transform: scale(1.1)
+  transform: scale(1.1);
 }
 
 i.fa-link {
@@ -342,11 +352,11 @@ i.fa-link:hover::before {
 }
 
 .footer {
+  width: 100%;
   background-color: var(--color-dark-grey);
-  grid-column-end: 3;
-  margin-top: 5em;
   grid-column-start: 2;
-  width: auto;
+  grid-column-end: 3;
+  top: 100%;
 }
 .footer h3 {
   color: white;
@@ -389,6 +399,7 @@ i.fa-link:hover::before {
 
 .footer li {
   transition: 650ms;
+  white-space: nowrap;
 }
 
 .footer li a {

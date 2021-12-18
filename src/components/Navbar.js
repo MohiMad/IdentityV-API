@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Version from './Version';
-import NavPages from './NavPages';
-import Logo from './Logo';
-import MenuToggler from './MenuToggler';
+import NavPages from './NavbarComponents/NavPages';
+import Logo from './NavbarComponents/Logo';
+import MenuToggler from './NavbarComponents/MenuToggler';
 
 
 export const handleMenuTogglerClickContext = React.createContext();

@@ -1,6 +1,6 @@
 import React, { useContext }from 'react';
 import PropTypes from 'prop-types';
-import { handleMenuTogglerClickContext} from './Navbar';
+import { handleMenuTogglerClickContext} from '../Navbar';
 
 
 function MenuToggler({ className }) {

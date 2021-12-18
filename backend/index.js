@@ -21,4 +21,6 @@ fs.readdirSync("./routes").forEach((route) => {
     app.use(`/api/${route.replace(".js", "")}`, require(`./routes/${route}`));
 });
 
+app.get("/version", (req, res) => res.json({ version: Utility.getVersion() }));
+
 app.listen(process.env.PORT || 3000);

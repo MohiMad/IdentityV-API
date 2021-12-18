@@ -1,7 +1,7 @@
 import React from 'react';
-import CopyHrefIcon from './CopyHrefIcon';
-import InlineCode from './InlineCode';
-import CodeBlock from './CodeBlock';
+import CopyHrefIcon from '../CopyHrefIcon';
+import InlineCode from '../InlineCode';
+import CodeBlock from '../CodeBlock';
 
 function EmoteExamples(props) {
     const cowboyDance = `{
@@ -29,7 +29,7 @@ function EmoteExamples(props) {
 
     return (
         <div id="examples-emote">
-            <h2><CopyHrefIcon value="examples-emote"/>Emote Examples</h2>
+            <h2><CopyHrefIcon value="examples/emote"/>Emote Examples</h2>
             <p>Emotes are separated into two different groups, ones with series, and ones without. 
                 Take <a href="https://id5.fandom.com/wiki/Dance" rel="noreferrer" target="_blank">Dance</a> and <a href="https://id5.fandom.com/wiki/Confused">Confused</a> emotes as an example. 
                 Dance has different animations depending on the character, 

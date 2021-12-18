@@ -1,38 +1,38 @@
 import React from 'react';
 import FooterColumn from './FooterColumn';
-import PageAnchor from './PageAnchor';
+import { Link } from "react-router-dom";
 
 function Footer() {
     return (
         <footer className="footer">
             <div className="container">
                 <div className="row">
-                    <FooterColumn title="Topics" children={
+                    <FooterColumn title="Topics">
                         <ul>
-                            <li><PageAnchor id="#getting-started" text="Getting Started"/></li>
-                            <li><PageAnchor id="#query" text="Query Parameters"/></li>
-                            <li><PageAnchor id="#portrait-series" text="Portrait Series"/></li>
-                            <li><PageAnchor id="#examples" text="Examples"/></li>
-                            <li><PageAnchor id="#help" text="Help"/></li>
+                            <ul>
+                                <li><Link to="/">Getting Started</Link></li>
+                                <li><Link to="/query">Query Parameters</Link></li>
+                                <li><Link to="/portrait-series">Portrait Series</Link></li>
+                                <li><Link to="/examples">Examples</Link></li>
+                                <li><Link to="/help">Help</Link></li>
+                            </ul>
                         </ul>
-                    } />
-                    <FooterColumn title="Changelog" children={
+                    </FooterColumn>
+                    <FooterColumn title="Changelog">
                         <ul>
-                            <li><PageAnchor id="#changelog" text="See changelog"/></li>
+                            <li><Link to="/changelog">See Changelog</Link></li>
                         </ul>
-                    } />
-
-                    <FooterColumn title="Community" children={
+                    </FooterColumn>
+                    <FooterColumn title="Community">
                         <ul>
                             <li><a href="https://discord.gg/f5absw6Kcn">Discord</a></li>
                         </ul>
-                    } />
-
-                    <FooterColumn title="Contribute" children={
+                    </FooterColumn>
+                    <FooterColumn title="Contribute">
                         <ul>
                             <li><a href="https://github.com/MohiMad/IdentityV-Costume-API">Open Source Repository</a></li>
                         </ul>
-                    } />
+                    </FooterColumn>
                 </div>
             </div>
         </footer>
