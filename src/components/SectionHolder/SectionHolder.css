@@ -1,0 +1,18 @@
+.section-holder {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    margin: 0% 5% 5% 5%;
+    position: relative;
+    width: auto;
+    height: 100%;
+  }
+  .section-holder div[id]:not(:last-child) {
+    margin-bottom: 5em;
+  }
+
+@media (max-width: 905px) {
+    .section-holder {
+      grid-column-end: 3;
+      grid-column-start: 1;
+    }
+}

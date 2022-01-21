@@ -1,18 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const Utility = require("../src/Utility.js");
-const Accessory = require("../src/Accessory.js");
+const DataParser = require("../src/DataParser.js");
 
+//TODO: Remove (duplicate)
 router.get("/:name", async (req, res) => {
     const name = Utility.formatParam(req.params.name);
 
-    const accessory = new Accessory(name);
-    await accessory.scrapeData();
-    
-    const data = accessory.jsonifyData();
+    const accessory = new DataParser(name);
+    const accessoryDdata = (await accessory.scrapeData())?.jsonifyData();
 
-    if (!data) return Utility.sendErrorMsg(res);
-    res.send(data);
+    if (!accessoryDdata) return Utility.sendErrorMsg(res);
+    res.send(accessoryDdata);
 });
 
 module.exports = router;

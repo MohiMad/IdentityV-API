@@ -1,20 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import InlineCode from '../components/InlineCode';
-import CopyHrefIcon from '../components/CopyHrefIcon';
+import InlineCode from '../components/InlineCode/InlineCode';
+import CopyHrefIcon from '../components/CopyHrefIcon/CopyHrefIcon';
 
 function PortraitSeries() {
-    const [seriesTableCells, setSeriesTableCells] = useState(
-        {
-            "Black-and-White_(Portrait)": [
-                "black_and_white",
-                "blackandwhite",
-                "bnw"
-            ],
-            "Colorful_Memory": [
-                "colorfulmemory",
-                "colorful_memory"
-            ]
-        });
+    const [seriesTableCells, setSeriesTableCells] = useState({});
 
     useEffect(() => {
         async function fetchData() {
@@ -35,7 +24,7 @@ function PortraitSeries() {
                     <h1><CopyHrefIcon />Possible Portrait Series</h1>
                     <h4>This section is dedicated to the /api/portrait endpoint where it uses a <InlineCode>:series</InlineCode> parameter. This parameter is explained in this section.</h4>
                     <p>Portrait series are groups that consists of non-speacial portraits. They're all summed up in one page in the Identity V Fandom,
-                        see the <a href="https://id5.fandom.com/wiki/Colorful_Memory" rel="noreferrer" target="_blank">colorful memory series'</a> page for reference.
+                        see the <a className="hyperlink" href="https://id5.fandom.com/wiki/Colorful_Memory" rel="noreferrer" target="_blank">colorful memory series'</a> page for reference.
                     </p>
                     <p>Note that the API is flexible with the :series parameter, meaning that you don't have to write it the way the fandom requires you to.
                         For instance, using "Black_and_white" is enough instead of "Black-and-White_(Portrait)"</p>

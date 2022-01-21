@@ -1,35 +1,25 @@
 const DataParser = require("./DataParser.js");
-const aliases = require("../aliases.json");
+const staticData = require("../staticData.json");
 const Data = require("./Data.js");
-const Utility = require("./Utility.js");
-const Regex = require("./Regex.js");
 
 class Portrait extends DataParser {
     constructor(query, name) {
         super(query);
         this.query = this.formatSeriesToMatchFandomQuery(query);
         this.name = name?.toLowerCase();
-        this.link;
-        this.DESCRIPTION_INDEX = 0;
-        this.ESSENCE_INDEX = 2;
-        this.PRICE_INDEX = 3;
     }
 
     async main() {
         await this.setHTMLBody();
         if (!this.HTMLBody) return;
         this.setLinkToPortrait();
-        if (!this.link) return;
         this.setBadgeChildren();
         if (!this.badgeChildren) return;
 
         const data = new Data()
             .setStatus(200)
+            .setAdditionalProperties(this.badgeChildren)
             .setName(`${this.query} ${this.name}`)
-            .setEssence(Utility.getValueAtIndex(this.badgeChildren, this.ESSENCE_INDEX))
-            .setDescription(Utility.getValueAtIndex(this.badgeChildren, this.DESCRIPTION_INDEX))
-            .setPrice(Utility.getValueAtIndex(this.badgeChildren, this.PRICE_INDEX))
-            .setRarity(Utility.getValueAtIndex(this.badgeChildren, this.RARITY_INDEX))
             .setLink(this.link);
 
         return this.jsonifyData(data);
@@ -38,9 +28,9 @@ class Portrait extends DataParser {
     formatSeriesToMatchFandomQuery(query) {
         if (!query) return;
 
-        if (!aliases.portraits[query]) {
-            const portraitqueryAliases = Object.values(aliases.portraits);
-            const validqueryFormats = Object.keys(aliases.portraits);
+        if (!staticData.portraits[query]) {
+            const portraitqueryAliases = Object.values(staticData.portraits);
+            const validqueryFormats = Object.keys(staticData.portraits);
 
             const index = portraitqueryAliases.findIndex((queryAliases) => {
                 return queryAliases.includes(query.toLowerCase());
@@ -55,8 +45,8 @@ class Portrait extends DataParser {
     setLinkToPortrait() {
         if (!this.HTMLBody) return;
 
-        const images = this.__getAllImages();
-        const characters = Object.assign(aliases.characters.survivors, aliases.characters.survivors);
+        const images = this.getAllImagesInHTML_BODY();
+        const characters = Object.assign(staticData.characters.survivors, staticData.characters.survivors);
         const aliasesArrays = Object.values(characters);
         const aliasesKeys = Object.keys(characters);
         const index = aliasesArrays.findIndex((arr) => arr.includes(this.name));
@@ -70,10 +60,6 @@ class Portrait extends DataParser {
         });
 
         this.link = portrait;
-    }
-
-    __getAllImages() {
-        return this.HTMLBody?.match(Regex.IMAGES);
     }
 }
 

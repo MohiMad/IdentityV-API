@@ -1,19 +1,10 @@
-const { scrape, jsonify, getValueAtIndex, findLastIndex } = require("./Utility.js");
+const { scrape, jsonify, removeTags } = require("./Utility.js");
 const Data = require("./Data.js");
 const Regex = require("./Regex.js");
 
 class DataParser {
     constructor(query) {
         this.query = query;
-        this.HTMLBody;
-        this.badgeChildren;
-        this.link;
-
-        this.WEARER_INDEX;
-        this.RARITY_INDEX;
-        this.ESSENCE_INDEX;
-        this.PRICE_INDEX;
-        this.DESCRIPTION_INDEX;
     }
 
     async scrapeData() {
@@ -22,18 +13,12 @@ class DataParser {
         await this.setLink();
         if (!this.link) return;
         this.setBadgeChildren();
-        this.setChangingIndexProperties();
 
         return this;
     }
 
     async setHTMLBody(query = this.query) {
         this.HTMLBody = await scrape(query);
-    }
-
-    setChangingIndexProperties() {
-        this.RARITY_INDEX = this.badgeChildren?.findIndex((value) => /tier/i.test(value));
-        this.ESSENCE_INDEX = findLastIndex(this.badgeChildren, (value) => /crossover|essence|season|treasure|spheres/i.test(value));
     }
 
     async setLink() {
@@ -51,7 +36,19 @@ class DataParser {
     }
 
     setBadgeChildren() {
-        this.badgeChildren = this.HTMLBody?.match(Regex.DIVS_WITH_CLASS_PI_DATA_VALUE_PI_FONT);
+        const fieldValues = this.HTMLBody?.match(Regex.DIVS_WITH_CLASS_PI_DATA_VALUE_PI_FONT);
+        const fieldKeys = this.HTMLBody?.match(Regex.H3_ELEMENTS_WITH_CLASS_PI_DATA_LABEL_PI_SECONDARY);
+        
+        if(!fieldKeys || !fieldValues) return;
+        
+        this.badgeChildren = {};
+        fieldKeys.forEach((key, index) => {
+            this.badgeChildren[this._sanitizeKey(key)] = removeTags(fieldValues[index]);
+        });
+    }
+
+    _sanitizeKey(key) {
+        return key.toLowerCase().replace(Regex.WORDS_CONNECTION_CHARACTERS, "_").replace(/\(.\)/g, "");
     }
 
     jsonifyData(data) {
@@ -61,15 +58,15 @@ class DataParser {
             data = new Data()
                 .setStatus(200)
                 .setName(this.query)
-                .setWearer(getValueAtIndex(this.badgeChildren, this.WEARER_INDEX))
-                .setEssence(getValueAtIndex(this.badgeChildren, this.ESSENCE_INDEX))
-                .setDescription(getValueAtIndex(this.badgeChildren, this.DESCRIPTION_INDEX))
-                .setPrice(getValueAtIndex(this.badgeChildren, this.PRICE_INDEX))
-                .setRarity(getValueAtIndex(this.badgeChildren, this.RARITY_INDEX))
-                .setLink(this.link);
+                .setLink(this.link)
+                .setAdditionalProperties(this.badgeChildren)
         }
 
         return jsonify(data);
+    }
+
+    getAllImagesInHTML_BODY() {
+        return this.HTMLBody?.match(Regex.IMAGES);
     }
 }
 

@@ -1,0 +1,20 @@
+pre code {
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 5px 5px 25px 0px #000;
+    margin: em;
+    max-width: 85%;
+    padding: 20px 20px;
+}
+
+pre code::-webkit-scrollbar {
+    height: .5em;
+}
+
+pre code::-webkit-scrollbar-track {
+    background: #282d38b7;
+}
+
+pre code::-webkit-scrollbar-thumb {
+    background: #15181ada;
+    border-radius: 5px;
+}

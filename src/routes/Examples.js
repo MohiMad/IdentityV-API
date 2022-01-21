@@ -1,10 +1,10 @@
 import React from 'react';
-import CopyHrefIcon from '../components/CopyHrefIcon';
-import SkinExamples from '../components/Examples/Skin';
-import PortraitExamples from '../components/Examples/Portrait';
-import AccessoryExamples from '../components/Examples/Accessory';
-import AliasesExamples from '../components/Examples/Aliases';
-import EmoteExamples from '../components/Examples/Emote';
+import CopyHrefIcon from '../components/CopyHrefIcon/CopyHrefIcon';
+import SkinExamples from '../components/exampleComponents/Skin/Skin';
+import PortraitExamples from '../components/exampleComponents/Portrait/Portrait';
+import AccessoryExamples from '../components/exampleComponents/Accessory/Accessory';
+import AliasesExamples from '../components/exampleComponents/Aliases/Aliases';
+import EmoteExamples from '../components/exampleComponents/Emote/Emote';
 
 function Examples() {
     return (

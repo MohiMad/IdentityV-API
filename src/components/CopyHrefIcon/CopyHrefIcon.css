@@ -1,0 +1,31 @@
+i.fa-link {
+  font-size: medium;
+  color: var(--color-dark-grey);
+  border-radius: 3px;
+  transform: translate(-50%, -15%);
+  cursor: pointer;
+  position: relative;
+}
+
+i.fa-link::after {
+  all: initial;
+  position: absolute;
+  content: attr(data-text);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  width: fit-content;
+  height: 0;
+  padding: 3px;
+  font-size: small;
+  white-space: nowrap;
+  color: var(--color-secondary);
+  background-color: var(--color-dark-grey);
+  transition: all 350ms ease-out;
+  height: fit-content;
+  transform: translate(-50%, -10px);
+  opacity: 0;
+}
+
+i.fa-link:hover::after {
+  opacity: 1;
+  transform: translate(-50%, -25px);
+}

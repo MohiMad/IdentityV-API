@@ -5,7 +5,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import './css/index.css';
+import './index.css';
 import App from './App';
 import Changelog from './routes/Changelog';
 import Help from './routes/Help';
@@ -15,12 +15,14 @@ import PageNotFound from './routes/PageNotFound';
 import Examples from './routes/Examples';
 import ExamplePage from './routes/ExamplePage';
 import GettingStarted from './routes/GettingStarted';
+import LandingPage from './routes/LandingPage/LandingPage';
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
+      <Route index element={<LandingPage />} />
       <Route path="/" element={<App />}>
-        <Route index element={<GettingStarted />} />
+        <Route path="getting-started" element={<GettingStarted />} />
         <Route path="query" element={<Query />} />
         <Route path="portrait-series" element={<PortraitSeries />} />
         <Route path="examples">

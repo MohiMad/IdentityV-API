@@ -1,0 +1,13 @@
+span.code {
+  background-color: var(--color-dark-grey);
+  border-radius: 5px;
+  color: #fffae0;
+  padding: 1px 4px 4px 4px;
+  margin-right: 2px;
+}
+
+@media (max-width: 767px) {
+  span.code {
+    font-size: small;
+  }
+}

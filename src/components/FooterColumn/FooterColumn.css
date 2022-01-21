@@ -1,0 +1,42 @@
+.footer-col h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  background-color: var(--color-primary);
+  height: 3px;
+  box-sizing: border-box;
+  width: 100%;
+  transition: all 500ms ease;
+}
+
+.footer-col {
+  padding: 0 15px;
+  width: 20%;
+  min-width: 21%;
+}
+
+.footer-col ul li:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 767px) {
+  .footer-col {
+    width: 50%;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes on-scroll-footer-header {
+    0% {
+      width: 0%;
+    }
+    50% {
+      width: 100%;
+    }
+  }
+
+  .footer-col h3.scroll-animation::before {
+    animation: on-scroll-footer-header 2s 1;
+  }
+}

@@ -1,0 +1,22 @@
+.table-holder {
+    min-width: 90%;
+    height: auto;
+    overflow-x: auto;
+  }
+
+  .multi-description-holder {
+    line-height: 30px;
+  }
+
+  @media (max-width: 480px) {
+    .multi-description-holder {
+      line-height: 20px;
+    }
+  }
+
+
+  @media (max-width: 767px) {
+    .multi-description-holder {
+      line-height: 25px;
+    }
+}

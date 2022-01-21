@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
-import PageTemplate from './components/PageTemplate';
-import SectionHolder from './components/SectionHolder';
+import PageTemplate from './components/PageTemplate/PageTemplate';
+import SectionHolder from './components/SectionHolder/SectionHolder';
 import { Outlet } from "react-router-dom";
 
 function App(props) {

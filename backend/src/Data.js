@@ -4,12 +4,6 @@ class Data {
     constructor() {
         this.status = 0;
         this.name = "Unnamed";
-        this.price = "N/A";
-        this.description = "None";
-        this.wearer;
-        this.essence;
-        this.rarity;
-        this.link;
     }
 
     setStatus(status) {

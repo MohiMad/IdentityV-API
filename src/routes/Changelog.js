@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CopyHrefIcon from '../components/CopyHrefIcon';
+import CopyHrefIcon from '../components/CopyHrefIcon/CopyHrefIcon';
 
 function Changelog(props) {
     const [changelogData, setChangelogData] = useState(
@@ -11,14 +11,14 @@ function Changelog(props) {
             ],
             "1.0.4": [
                 "[Improved] The way the API handles requests, using parameters instead of query strings",
-                "[Added] /Portrait endpoint",
-                "[Added] /Aliases endpoint",
+                "[Added] /Portrait route",
+                "[Added] /Aliases route",
                 "[Improved] Scraping the fandom to adapt to multiple types of pages",
-                "[Added] More fields to /Skin endpoint output"
+                "[Added] More fields to /Skin route output"
             ],
             "1.0.6": [
                 "[Moved] All the endpoints to /api",
-                "[Added] /Emote endpoint.",
+                "[Added] /Emote route.",
                 "[Improved] The UI for the documentation."
             ]
         });

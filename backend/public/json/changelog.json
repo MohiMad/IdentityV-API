@@ -6,14 +6,20 @@
     ],
     "1.0.4": [
         "[Improved] The way the API handles requests, using parameters instead of query strings",
-        "[Added] /Portrait endpoint",
-        "[Added] /Aliases endpoint",
+        "[Added] /Portrait route",
+        "[Added] /Aliases route",
         "[Improved] Scraping the fandom to adapt to multiple types of pages",
-        "[Added] More fields to /Skin endpoint output"
+        "[Added] More fields to /Skin route output"
     ],
     "1.0.6": [
-        "[Moved] All the endpoints to /api",
-        "[Added] /Emote endpoint.",
+        "[Moved] All the routes to /api endpoint",
+        "[Added] /Emote route.",
         "[Improved] The UI for the documentation."
+    ],
+    "1.0.7": [
+        "[Added] /Character route.",
+        "[Improved] The fandom scraping algorithm to be 100% accurate",
+        "[Added] Added new properties for the output",
+        "[Improved] The UI experience"
     ]
 }

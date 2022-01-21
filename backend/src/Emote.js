@@ -2,16 +2,13 @@ const DataParser = require("./DataParser.js");
 const Utility = require("./Utility.js");
 const Data = require("./Data.js");
 const Regex = require("./Regex.js");
-const aliases = require("../aliases.json");
+const staticData = require("../staticData.json");
 
 class Emote extends DataParser {
     constructor(query, name) {
         super(query);
         this.name = name;
         this.factor = Utility.indicateFactor(name);
-        this.PRICE_INDEX = -2;
-        this.DESCRIPTION_INDEX = 1;
-        this.preview;
     }
 
     async scrapeAndJsonifyData() {
@@ -19,7 +16,6 @@ class Emote extends DataParser {
 
         await this.setHTMLBody();
         this.setBadgeChildren();
-        this.setChangingIndexProperties();
         this.setLink();
         this.setPreview();
 
@@ -28,12 +24,12 @@ class Emote extends DataParser {
         const data = new Data()
             .setStatus(200)
             .setName(`${this.query} ${this.name}`)
-            .setDescription(Utility.getValueAtIndex(this.badgeChildren, this.DESCRIPTION_INDEX).replace("[Character]", this.name))
-            .setPrice(Utility.getValueAtIndex(this.badgeChildren, this.PRICE_INDEX))
-            .setEssence(Utility.getValueAtIndex(this.badgeChildren, this.ESSENCE_INDEX))
-            .setRarity(Utility.getValueAtIndex(this.badgeChildren, this.RARITY_INDEX))
             .setLink(this.link)
-            .setAdditionalProperties({ preview: this.preview });
+            .setAdditionalProperties({
+                preview: this.preview,
+                ...this.badgeChildren,
+                description: this.badgeChildren.description.replace("[Character]", Utility.findPreferredAlias(this.name))
+            });
 
         return this.jsonifyData(data);
     }
@@ -64,7 +60,7 @@ class Emote extends DataParser {
         this.preview = gifs.find((gif) => {
             return gif.toLowerCase().includes(this.name.toLowerCase().replace(Regex.UNDERLINES, "")) ||
                 gif.toLowerCase().includes(preferredAlias.toLowerCase().replace(Regex.UNDERLINES, "")) ||
-                aliases.characters[this.factor][preferredAlias].some((value) => gif.toLowerCase().includes(value.toLowerCase().replace("_", "")));
+                staticData.characters[this.factor][preferredAlias].some((value) => gif.toLowerCase().includes(value.toLowerCase().replace("_", "")));
         });
     }
 }

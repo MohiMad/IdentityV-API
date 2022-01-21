@@ -36,7 +36,7 @@
             "description": [
                 {
                     "name": ":factor",
-                    "description": "The factor the character belongs to. Either Hunters or Survivors. If none provided the endpoint returns all characters' aliases."
+                    "description": "The factor the character belongs to. Either Hunters or Survivors. If none provided the route returns all characters' aliases."
                 },
                 {
                     "name": ":name",
@@ -56,6 +56,17 @@
                 {
                     "name": ":name",
                     "description": "The name of the character you want to retrieve its series emote."
+                }
+            ],
+            "isRequired": true
+        },
+        {
+            "name": "character/:name",
+            "type":"string",
+            "description": [
+                {
+                    "name": ":name",
+                    "description": "The name of the character you want to retrieve data for."
                 }
             ],
             "isRequired": true

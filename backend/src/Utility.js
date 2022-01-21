@@ -1,5 +1,5 @@
 const got = require("got");
-const aliases = require("../aliases.json");
+const staticData = require("../staticData.json");
 const Regex = require("./Regex.js");
 
 class Utility {
@@ -59,10 +59,10 @@ class Utility {
     indicateFactor(name) {
         if (!name) return;
 
-        const factors = Object.keys(aliases.characters);
+        const factors = Object.keys(staticData.characters);
 
         for (const factor of factors) {
-            const charactersAliases = Object.values(aliases.characters[factor]);
+            const charactersAliases = Object.values(staticData.characters[factor]);
 
             for (const characterAlias of charactersAliases) {
                 const exists = characterAlias.some((value) => {
@@ -80,7 +80,7 @@ class Utility {
         const factor = this.indicateFactor(character);
         if (!factor) return;
 
-        for (const [preferredAlias, characterAliases] of Object.entries(aliases.characters[factor.toLowerCase()])) {
+        for (const [preferredAlias, characterAliases] of Object.entries(staticData.characters[factor.toLowerCase()])) {
             if (characterAliases.includes(character)) return preferredAlias;
         }
     }

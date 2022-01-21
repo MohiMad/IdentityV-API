@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const aliases = require("../aliases.json");
+const staticData = require("../staticData.json");
 const Utility = require("../src/Utility.js");
 
-Object.keys(aliases.characters).forEach((subCategory) => {
-    router.get(`/${subCategory}`, (req, res) => res.send(aliases.characters[subCategory]));
+Object.keys(staticData.characters).forEach((subCategory) => {
+    router.get(`/${subCategory}`, (req, res) => res.send(staticData.characters[subCategory]));
 
     router.get(`/${subCategory}/:name`, (req, res) => {
         const name = Utility.findPreferredAlias(req.params.name);
 
-        const data = aliases.characters[subCategory]?.[name];
+        const data = staticData.characters[subCategory]?.[name];
 
         if (!data) return Utility.sendErrorMsg(res);
 
@@ -18,11 +18,11 @@ Object.keys(aliases.characters).forEach((subCategory) => {
 });
 
 router.get("/portraits", (req, res) => {
-    res.send(aliases.portraits);
+    res.send(staticData.portraits);
 });
 
 router.get("/", (req, res) => {
-    const characters = Object.assign(aliases.characters.survivors, aliases.characters.hunters);
+    const characters = Object.assign(staticData.characters.survivors, staticData.characters.hunters);
     res.send(characters);
 });
 

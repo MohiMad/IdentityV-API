@@ -1,0 +1,23 @@
+.logo {
+  background-image: url("../../assets/logo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Dancing Script", Arial, Helvetica, sans-serif;
+  margin-top: 1em;
+  min-height: clamp(3em, 10vw, 6em);
+  min-width: clamp(10em, 20vw, 20em);
+  position: relative;
+}
+
+.logo::after {
+  border-bottom: 3px solid var(--color-primary);
+  bottom: 0;
+  color: var(--color-secondary);
+  content: "API";
+  display: block;
+  font-size: clamp(1rem, 3vw, 2rem);
+  font-weight: 800;
+  position: absolute;
+  right: -0.5em;
+}
