@@ -28,5 +28,4 @@ app.get("/*", (req, res) => {
     res.render(path.join(__dirname, "..", "build", "index.html"));
 });
 
-
 app.listen(process.env.PORT || 3000);

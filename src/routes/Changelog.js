@@ -41,7 +41,7 @@ function Changelog(props) {
         <section id="change-log">
             <h1><CopyHrefIcon value="changelog" />Changelog</h1>
             <ul>
-                {Object.entries(changelogData).map(([version, changes]) => {
+                {Object.entries(changelogData).reverse().map(([version, changes]) => {
                     return (
                         <li key={version.toString()}>
                             {version}
