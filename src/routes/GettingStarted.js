@@ -10,7 +10,7 @@ function GettingStarted(props) {
     const axiosExampleCode = `
 const axios = require("axios");
 // Get data from https://id5.fandom.com/wiki/Ryuk
-axios.get("https://idv-costume.herokuapp.com/${RYUK_ROUTE}").then(function (response) {
+axios.get("https://idvapi.herokuapp.com/${RYUK_ROUTE}").then(function (response) {
         // handle success
         console.log(response.data);
 
@@ -21,7 +21,10 @@ axios.get("https://idv-costume.herokuapp.com/${RYUK_ROUTE}").then(function (re
 
     return (
         <section id="getting-started">
-            <WarningBadge content={(<p>The API's routes has been moved from the root directory to <InlineCode>/api</InlineCode>.</p>)} />
+            <WarningBadge content={
+                (
+                <p>The website's domain has been moved from <InlineCode>https://idv-costume.herokuapp.com/</InlineCode> to <InlineCode>https://idvapi.herokuapp.com/</InlineCode></p>
+                )} />
 
             <h1><CopyHrefIcon value="getting-started" />Getting Started</h1>
             <p>To retreive information uisng the API, use the query parameters to specify what type of data you want.
