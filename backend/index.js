@@ -8,12 +8,12 @@ const staticData = require("./staticData.json");
 
 app.use(cors({ orgin: "*" }));
 
+app.set('views', path.join(__dirname, "views")); 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
 app.use(express.static("build"));
 
-app.set('views', path.join(__dirname, "..", "build")); 
 
 // app.use("/public", express.static("public"));
 
