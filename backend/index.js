@@ -12,8 +12,8 @@ app.engine('html', require('ejs').renderFile);
 app.use(express.static(path.join(__dirname, "..", "build")));
 app.use("/public", express.static("public"));
 
-fs.readdirSync("./routes").forEach((route) => {
-    app.use(`/api/${route.replace(".js", "")}`, require(`./routes/${route}`));
+fs.readdirSync(path.join(__dirname, "/routes")).forEach((route) => {
+    app.use(`/api/${route.replace(".js", "")}`, require(path.join(__dirname, `/routes/${route}`)));
 });
 
 staticData.redirections.forEach(({ route, redirectTo }) => {
