@@ -10,7 +10,7 @@ app.use(cors({ orgin: "*" }));
 
 app.set('views', path.join(__dirname, "..", "build")); 
 app.set('view engine', 'html');
-//app.engine('html', require('ejs').renderFile);
+app.engine('html', require('ejs').renderFile);
 
 app.use(express.static(path.join(__dirname, "..", "build")));
 app.use("/public", express.static("public"));
