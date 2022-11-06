@@ -13,6 +13,8 @@ app.set('view engine', 'html');
 
 app.use(express.static("build"));
 
+app.set('views', path.join(__dirname, "..", "build")); 
+
 // app.use("/public", express.static("public"));
 
 fs.readdirSync(path.join(__dirname, "/routes")).forEach((route) => {
