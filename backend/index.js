@@ -9,6 +9,8 @@ const staticData = require("./staticData.json");
 app.use(cors({ orgin: "*" }));
 
 app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
 app.use(express.static("build"));
 
 // app.use("/public", express.static("public"));
