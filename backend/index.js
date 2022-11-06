@@ -9,7 +9,7 @@ const staticData = require("./staticData.json");
 app.use(cors({ orgin: "*" }));
 
 app.engine('html', require('ejs').renderFile);
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static("build"));
 app.use("/public", express.static("public"));
 
 fs.readdirSync(path.join(__dirname, "/routes")).forEach((route) => {
@@ -25,8 +25,7 @@ staticData.redirections.forEach(({ route, redirectTo }) => {
 app.get("/version", (req, res) => res.json({ version: Utility.getVersion() }));
 
 app.get("/*", (req, res) => {
-    console.log(path.join(__dirname, "..", "build", "index.html"))
-    res.render(path.join(__dirname, "build", "index.html"));
+    res.render("./build/index.html");
 });
 
 app.listen(process.env.PORT || 3000);
