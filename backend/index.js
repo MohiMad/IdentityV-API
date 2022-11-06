@@ -9,7 +9,7 @@ const staticData = require("./staticData.json");
 app.use(cors({ orgin: "*" }));
 
 app.engine('html', require('ejs').renderFile);
-app.use(express.static(path.join(__dirname, "..", "build")));
+app.use(express.static(path.join(__dirname, "build")));
 app.use("/public", express.static("public"));
 
 fs.readdirSync(path.join(__dirname, "/routes")).forEach((route) => {
