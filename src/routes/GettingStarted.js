@@ -1,8 +1,8 @@
 import React from 'react';
 import CodeBlock from '../components/CodeBlock/CodeBlock';
 import CopyHrefIcon from '../components/CopyHrefIcon/CopyHrefIcon';
-import WarningBadge from '../components/WarningBadge/WarningBadge';
-import InlineCode from '../components/InlineCode/InlineCode';
+/* import WarningBadge from '../components/WarningBadge/WarningBadge';
+import InlineCode from '../components/InlineCode/InlineCode'; */
 import FormattedJSONFromRoute from '../components/FormattedJSONFromRoute/FormattedJSONFromRoute';
 
 function GettingStarted(props) {
@@ -21,10 +21,10 @@ axios.get("https://idvapi.herokuapp.com/${RYUK_ROUTE}").then(function (respons
 
     return (
         <section id="getting-started">
-            <WarningBadge content={
+            {/* <WarningBadge content={
                 (
                 <p>The website's domain has been moved from <InlineCode>https://idv-costume.herokuapp.com/</InlineCode> to <InlineCode>https://idvapi.herokuapp.com/</InlineCode></p>
-                )} />
+                )} /> */}
 
             <h1><CopyHrefIcon value="getting-started" />Getting Started</h1>
             <p>To retreive information uisng the API, use the query parameters to specify what type of data you want.
