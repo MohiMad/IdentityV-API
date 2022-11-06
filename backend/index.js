@@ -28,7 +28,7 @@ staticData.redirections.forEach(({ route, redirectTo }) => {
 app.get("/version", (req, res) => res.json({ version: Utility.getVersion() }));
 
 app.get("/*", (req, res) => {
-    res.render(path.join(__dirname, "build"));
+    res.render("");
 });
 
 app.listen(process.env.PORT || 3000);
