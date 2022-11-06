@@ -8,7 +8,7 @@ const staticData = require("./staticData.json");
 
 app.use(cors({ orgin: "*" }));
 
-app.set('views', path.join(__dirname, "..", "..", "..", "build")); 
+app.set('views', path.join(__dirname, "build")); 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
