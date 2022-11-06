@@ -58,9 +58,5 @@
       "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
       "testEnvironment": "jsdom"
     }
-  },
-  "devDependencies": {
-    "@testing-library/react": "^11.2.7",
-    "react-test-render": "^1.1.2"
   }
 }
