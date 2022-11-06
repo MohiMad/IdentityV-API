@@ -10,6 +10,8 @@ app.use(cors({ orgin: "*" }));
 
 app.engine('html', require('ejs').renderFile);
 app.use(express.static("build"));
+app.set('views', __dirname + '/views');
+
 app.use("/public", express.static("public"));
 
 fs.readdirSync(path.join(__dirname, "/routes")).forEach((route) => {
