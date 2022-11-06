@@ -13,7 +13,7 @@ app.set('view engine', 'html');
 
 app.use(express.static("build"));
 
-//app.set('views', path.join(__dirname, "..", "build")); 
+app.set('views', "../build"); 
 
 // app.use("/public", express.static("public"));
 
@@ -30,7 +30,7 @@ staticData.redirections.forEach(({ route, redirectTo }) => {
 app.get("/version", (req, res) => res.json({ version: Utility.getVersion() }));
 
 app.get("/*", (req, res) => {
-    res.render("../build/index.html");
+    res.render("index.html");
 });
 
 app.listen(process.env.PORT || 3000);
