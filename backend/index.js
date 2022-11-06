@@ -13,7 +13,7 @@ app.set('view engine', 'html');
 
 app.use(express.static("build"));
 
-app.set('views', "../build"); 
+app.set('views', path.join(__dirname, "..", "build")); 
 
 // app.use("/public", express.static("public"));
 
